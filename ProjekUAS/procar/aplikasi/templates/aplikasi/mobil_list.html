@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {% block extra_head %}
+<style>
+  h1 {
+    color: #151e1e;
+    text-align: center;
+    font-family: Inter, sans-serif;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #151e1e;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid white;
+    color: white;
+  }
+
+  th {
+    background-color: #151e1e;
+    color: white;
+    text-align: center;
+  }
+
+  td {
+    font-family: Arial, sans-serif;
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 1px solid white;
+    vertical-align: middle;
+  }
+
+  .btn-action {
+    margin: 0 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .create-button {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .fa-icon {
+    font-size: 20px;
+  }
+
+  .fa-edit {
+    color: #ffc107;
+  }
+
+  .fa-trash {
+    color: #dc3545;
+  }
+
+  .fa-plus {
+    color: #d9d9d9;
+  }
+
+  .notification {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    animation: fadeOut 4s forwards; /* Apply fade-out animation */
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
+{% endblock %} {% block content %}
+<h1>List Mobil</h1>
+{% if messages %}
+<div class="notification">
+  {% for message in messages %} {{ message }} {% endfor %}
+</div>
+{% endif %}
+<div class="table">
+  <div class="create-button">
+    <a href="{% url 'tambah_mobil' %}" class="btn btn-primary">
+      <i class="fas fa-plus fa-icon"></i> Create New
+    </a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Merek</th>
+        <th>Jenis</th>
+        <th>Penggerak Roda</th>
+        <th>Tahun</th>
+        <th>Odometer</th>
+        <th>Bahan Bakar</th>
+        <th>Transmisi</th>
+        <th>Kapasitas Mesin</th>
+        <th>Warna</th>
+        <th>Harga</th>
+        <th>Kelayakan</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for mobil in mobil_list %}
+      <tr>
+        <td>{{ mobil.merek }}</td>
+        <td>{{ mobil.jenis }}</td>
+        <td>{{ mobil.get_Penggerakroda_display }}</td>
+        <td>{{ mobil.tahun }}</td>
+        <td>{{ mobil.odometer }}</td>
+        <td>{{ mobil.get_bahanbakar_display }}</td>
+        <td>{{ mobil.get_transmisi_display }}</td>
+        <td>{{ mobil.kapasitas_mesin }}</td>
+        <td>{{ mobil.warna }}</td>
+        <td>{{ mobil.harga }}</td>
+        <td>{{ mobil.get_kelayakan_display }}</td>
+        <td>
+          <a href="{% url 'edit_mobil' mobil.pk %}" class="btn btn-action">
+            <i class="fas fa-edit fa-icon"></i>
+          </a>
+          <a href="{% url 'delete_mobil' mobil.pk %}" class="btn btn-action">
+            <i class="fas fa-trash fa-icon"></i>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

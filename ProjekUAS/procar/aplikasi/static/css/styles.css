@@ -1,0 +1,50 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.navbar-brand {
+    font-size: 1.8rem; /* Increase font size for the brand/logo */
+    font-weight: bold; /* Make the text bold */
+}
+
+.nav-link.custom-white-text {
+    color: #fff !important; /* Make the text white */
+}
+
+.nav-link {
+    margin-left: 15px; /* Add more space between navigation links */
+}
+
+.nav-link.btn.custom-white-text {
+    margin-left: 20px; /* Add even more space before the login button */
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+
+.navbar .nav-link.btn-custom-login {
+    background-color: #AE9C8B; /* Change button background color */
+    border-radius: 15px; /* Increase button border radius */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+main {
+    
+    border-radius: 5px;
+    
+    padding: 20px;
+}
+

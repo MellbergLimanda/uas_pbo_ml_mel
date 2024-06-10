@@ -1,0 +1,82 @@
+<!-- templates/about.html -->
+{% extends "base.html" %}
+
+{% block extra_head %}
+<style>
+  .content-container {
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+
+  h2, h3, h4, h5 {
+    color: #151e1e;
+  }
+
+  h2 {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+
+  h4, h5 {
+    margin-top: 15px;
+    font-family: 'Arial', sans-serif;
+     /* Make h4 and h5 bold */
+  }
+
+  p {
+    color: #333;
+    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .center-text {
+    text-align: center; /* Center align the text */
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-container">
+  <h2>About Us</h2>
+  <p class="center-text">Welcome to PROCAR. Learn more about us here.</p>
+
+  <h3>Siapa Kami</h3>
+  <p>Di AutoPredict, kami adalah tim yang terdiri dari ilmuwan data, ahli otomotif, dan penggemar teknologi yang berdedikasi untuk mengubah cara Anda membeli dan menjual mobil. Kami menggabungkan pemahaman mendalam kami tentang pasar otomotif dengan teknologi pembelajaran mesin terkini untuk memberikan prediksi harga mobil yang akurat dan andal.</p>
+
+  <h3>Misi Kami</h3>
+  <p>Misi kami adalah memberdayakan konsumen dan dealer dengan wawasan yang transparan dan berbasis data tentang penetapan harga mobil. Kami berusaha untuk membuat proses pembelian dan penjualan mobil menjadi lebih terinformasi, efisien, dan adil bagi semua pihak yang terlibat.</p>
+
+  <h3>Apa yang Kami Lakukan</h3>
+
+  <h5>Model Prediksi Harga Canggih</h5>
+  <p>Menggunakan algoritma canggih dan kumpulan data luas dari tren pasar, harga historis, dan atribut kendaraan, model kami memberikan perkiraan harga yang tepat untuk mobil baru dan bekas.</p>
+
+  <h5>Analisis Pasar</h5>
+  <p>Kami terus memantau dan menganalisis pasar otomotif untuk menjaga prediksi kami tetap terkini dengan tren dan pergeseran terbaru. Ini memastikan pengguna kami selalu memiliki akses ke informasi harga yang paling mutakhir dan relevan.</p>
+
+  <h5>Alat yang Mudah Digunakan</h5>
+  <p>Platform kami dirancang dengan kesederhanaan dan kemudahan penggunaan. Apakah Anda pembeli mobil pertama kali, dealer berpengalaman, atau hanya penasaran tentang harga mobil, antarmuka intuitif kami memudahkan Anda mendapatkan informasi yang Anda butuhkan.</p>
+
+  <h3>Mengapa Memilih Kami</h3>
+  
+  <h5>Akurasi</h5>
+  <p>Algoritma mutakhir kami terus disempurnakan untuk memastikan prediksi harga kami seakurat mungkin.</p>
+
+  <h5>Transparansi</h5>
+  <p>Kami percaya dalam memberikan wawasan yang jelas dan mendetail tentang bagaimana prediksi kami dibuat, sehingga Anda dapat mempercayai informasi yang Anda terima.</p>
+
+  <h5>Keahlian</h5>
+  <p>Latar belakang tim kami yang beragam dalam ilmu data dan industri otomotif berarti Anda mendapatkan yang terbaik dari kedua bidang tersebut.</p>
+
+  <h5>Berfokus pada Pelanggan</h5>
+  <p>Pengalaman Anda adalah prioritas kami. Kami ada untuk mendukung Anda dengan layanan pelanggan yang responsif dan sumber daya yang berharga.</p>
+</div>
+{% endblock %}

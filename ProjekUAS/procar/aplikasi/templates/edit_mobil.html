@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit Mobil{% endblock %}
+
+{% block extra_head %}
+<style>
+  h1 {
+    color: #151e1e;
+    text-align: center;
+    font-family: Inter, sans-serif;
+    margin-top: 20px;
+  }
+
+  .container {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .form-container {
+    background-color: #151e1e;
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .popup {
+    visibility: hidden;
+    width: 300px;
+    background-color: #151e1e;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .popup.show {
+    visibility: visible;
+  }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#id_merek').change(function() {
+      var merekId = $(this).val();
+      $.ajax({
+        url: '{% url 'jenis_by_merek' %}',
+        type: 'GET',
+        data: {'merek_id': merekId},
+        dataType: 'json',
+        success: function(data) {
+          var jenisSelect = $('#id_jenis');
+          jenisSelect.empty();
+          $.each(data.jenis_list, function(index, jenis) {
+            jenisSelect.append($('<option>', {
+              value: jenis.id,
+              text: jenis.name
+            }));
+          });
+        },
+        error: function(xhr, status, error) {
+          console.error('Error:', error);
+        }
+      });
+    });
+  });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Edit Mobil</h1>
+    {% if messages %}
+        <div class="popup" id="popup">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="merek">Merek</label>
+                {{ form.merek }}
+            </div>
+            <div class="form-group">
+                <label for="jenis">Jenis</label>
+                {{ form.jenis }}
+            </div>
+            <div class="form-group">
+                <label for="Penggerakroda">Penggerak Roda</label>
+                {{ form.Penggerakroda }}
+            </div>
+            <div class="form-group">
+                <label for="tahun">Tahun</label>
+                {{ form.tahun }}
+            </div>
+            <div class="form-group">
+                <label for="odometer">Odometer</label>
+                {{ form.odometer }}
+            </div>
+            <div class="form-group">
+                <label for="bahanbakar">Bahan Bakar</label>
+                {{ form.bahanbakar }}
+            </div>
+            <div class="form-group">
+                <label for="transmisi">Transmisi</label>
+                {{ form.transmisi }}
+            </div>
+            <div class="form-group">
+                <label for="kapasitas_mesin">Kapasitas Mesin</label>
+                {{ form.kapasitas_mesin }}
+            </div>
+            <div class="form-group">
+                <label for="warna">Warna</label>
+                {{ form.warna }}
+            </div>
+            <div class="form-group">
+                <label for="harga">Harga</label>
+                {{ form.harga }}
+            </div>
+            <div class="form-group">
+                <label for="kelayakan">Kelayakan</label>
+                {{ form.kelayakan }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
